@@ -6,6 +6,8 @@
 #include <ctime>
 #include <fstream>
 #include <math.h>
+#include <set>
+#include "task4.h"
 
 int task1()
 {
@@ -91,22 +93,70 @@ void task3()
 	f.open("graph.csv");
 	for (int i = 0; i < primes_res.size(); i++)
 	{
-		std::cout << primes_res[i] << std::endl;
+		//std::cout << primes_res[i] << std::endl;
 		f << primes_res[i] << " , ";
 	}
 	f << "\n";
 	for (int i = 0; i < rand_res.size(); i++)
 	{
-		std::cout << rand_res[i] << std::endl;
+		//std::cout << rand_res[i] << std::endl;
 		f << rand_res[i] << " , ";
 	}
 	f << "\n";
 	for (int i = 0; i < below7_res.size(); i++)
 	{
-		std::cout << below7_res[i] << std::endl;
+		//std::cout << below7_res[i] << std::endl;
 		f << below7_res[i] << " , ";
 	}
 	f << "\n";
+}
+
+void task4_dumb()
+{
+	int count = 0;
+	std::set<int> primes = { 2,3,5,7 };
+	for (int n1 = 0; n1 < 10; n1+=2)
+	{
+		for (int n2 = 0; n2 < 10; n2++)
+		{
+			if (primes.contains(n1) && primes.contains(n2)) continue;
+			for (int n3 = 0; n3 < 10; n3++)
+			{
+				if (primes.contains(n2) && primes.contains(n3)) continue;
+				for (int n4 = 0; n4 < 10; n4++)
+				{
+					if (primes.contains(n3) && primes.contains(n4)) continue;
+					for (int n5 = 0; n5 < 10; n5++)
+					{
+						if (primes.contains(n4) && primes.contains(n5)) continue;
+						for (int n6 = 0; n6 < 10; n6++)
+						{
+							if (primes.contains(n5) && primes.contains(n6)) continue;
+							for (int n7 = 0; n7 < 10; n7++)
+							{
+								if (primes.contains(n6) && primes.contains(n7)) continue;
+								for (int n8 = 0; n8 < 10; n8++)
+								{
+									if (primes.contains(n7) && primes.contains(n8)) continue;
+									for (int n9 = 0; n9 < 10; n9++)
+									{
+										if (primes.contains(n8) && primes.contains(n9)) continue;
+										for (int n10 = 0; n10 < 10; n10++)
+										{
+											if (primes.contains(n9) && primes.contains(n10)) continue;
+											count++;
+											std::cout << count << std::endl;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	std::cout << count << std::endl;
 }
 
 int main()
@@ -115,5 +165,9 @@ int main()
 
 	//std::cout << countNEven(30) << std::endl;
 
-	task3();
+	//task3();
+
+	//task4_dumb();
+
+	std::cout << task4() << std::endl;
 }
